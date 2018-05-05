@@ -1,0 +1,23 @@
+version: '2'
+
+volumes:
+  nodered-data:
+  mosquitto-data:
+  mosquitto-log:
+
+services:
+  nodered:
+    image: nodered/node-red-docker:rpi-v8
+    ports:
+      - "1880:1880"
+    volumes:
+      - "nodered-data:/data"
+
+  mosqitto:
+    image: fstehle/rpi-mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    volumes:
+      - "mosquitto-data:/mosquitto/data"
+      - "mosquitto-log:/mosquitto/log"
