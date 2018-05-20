@@ -10,7 +10,6 @@ services:
     image: nodered/node-red-docker:rpi-v8
     ports:
       - "1880:1880"
-      - "80:1880"
     volumes:
       - "nodered-data:/data"
     depends_on:
@@ -25,3 +24,8 @@ services:
       - "mosquitto-data:/mosquitto/data"
       - "mosquitto-log:/mosquitto/log"
 
+  avahi:
+    build: ./avahi
+    container_name: avahi
+    labels:
+      io.resin.features.dbus: '1'
