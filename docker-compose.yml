@@ -27,5 +27,6 @@ services:
   avahi:
     build: ./avahi
     container_name: avahi
+    privileged: true
     labels:
       io.resin.features.dbus: '1'
