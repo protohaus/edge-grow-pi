@@ -7,7 +7,8 @@ ENV INITSYSTEM on
 # python-flash for example server
 RUN apt-get update && apt-get install -yq \
     python-dbus \
-    python-flask
+    python-flask \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY *.py ./
 COPY avahi avahi
