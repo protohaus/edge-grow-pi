@@ -1,0 +1,12 @@
+FROM resin/%%RESIN_MACHINE_NAME%%-python:jessie
+
+WORKDIR /usr/src/app/
+ENV INITSYSTEM on
+
+# python-dbus for dbus communication
+RUN pip install python-networkmanager raven
+
+COPY *.py ./
+COPY start.sh ./
+
+CMD ["bash", "start.sh"]
