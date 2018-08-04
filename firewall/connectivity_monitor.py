@@ -1,6 +1,9 @@
-import NetworkManager, time, os
+import NetworkManager, time, os, raven
 
+# Host to ping to check connectivity
 hostname = "google.com"
+
+client = raven.Client(os.environ.get('SENTRY_DSN')
 
 if __name__ == "__main__":
     # Give the system 5 minutes to start up
@@ -18,5 +21,6 @@ if __name__ == "__main__":
           time.sleep(5)
           NetworkManager.NetworkManager.WirelessEnabled = True
           time.sleep(50)
+          client.captureMessage('Network was down. WiFi connections have been restarted.')
         
         time.sleep(10)
