@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-python:jessie
+FROM resin/%%RESIN_MACHINE_NAME%%-python
 
 WORKDIR /usr/src/app/
 ENV INITSYSTEM on
