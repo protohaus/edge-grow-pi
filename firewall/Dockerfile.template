@@ -1,10 +1,11 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-python
+FROM resin/%%RESIN_MACHINE_NAME%%-python:3.6
 
 WORKDIR /usr/src/app/
 ENV INITSYSTEM on
 
 # python-dbus for dbus communication
-RUN pip install python-networkmanager raven
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
 
 COPY *.py ./
 COPY start.sh ./
