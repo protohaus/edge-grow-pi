@@ -3,7 +3,7 @@ import NetworkManager, time, os, raven
 # Host to ping to check connectivity
 hostname = "google.com"
 
-client = raven.Client(os.environ.get('SENTRY_DSN')
+client = raven.Client(os.environ.get('SENTRY_DSN'))
 
 if __name__ == "__main__":
     # Give the system 5 minutes to start up
