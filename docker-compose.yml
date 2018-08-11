@@ -31,3 +31,10 @@ services:
     privileged: true
     labels:
       io.resin.features.dbus: '1'
+
+  firewall:
+    build: ./firewall
+    container_name: firewall
+    privileged: true
+    labels:
+      io.resin.features.dbus: '1'
