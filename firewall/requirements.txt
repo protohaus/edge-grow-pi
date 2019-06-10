@@ -1,4 +1,4 @@
-dbus-python==1.2.8
+dbus-python~=1.2
 python-networkmanager==2.1
 raven==6.9.0
 six==1.11.0

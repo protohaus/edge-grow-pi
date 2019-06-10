@@ -1,14 +1,10 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian:jessie
+FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu-python:3.7-bionic-build
 
 WORKDIR /usr/src/app/
 ENV INITSYSTEM on
 
-# python-dbus for dbus communication
-# python-flash for example server
-RUN apt-get update && apt-get install -yq \
-    python-dbus \
-    python-flask \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Allow communication to the host avahi daemon
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 COPY *.py ./
 COPY avahi avahi
