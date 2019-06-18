@@ -7,7 +7,7 @@ volumes:
 
 services:
   nodered:
-    image: nodered/node-red-docker:rpi-v8
+    build: ./node-red
     ports:
       - "80:1880"
     volumes:
