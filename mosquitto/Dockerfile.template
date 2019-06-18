@@ -1,15 +1,10 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian:jessie
+FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu:bionic-build
 MAINTAINER Moritz Ulmer <moritz.ulmer@posteo.de>
 
-RUN apt-get update && apt-get install -y wget apt-transport-https ca-certificates
-
-RUN wget -q -O - http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key | apt-key add -
-RUN wget -q -O /etc/apt/sources.list.d/mosquitto-jessie.list http://repo.mosquitto.org/debian/mosquitto-jessie.list
 RUN apt-get update && apt-get install -y \
     mosquitto \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
-
-RUN adduser --system --disabled-password --disabled-login mosquitto
+    mosquitto-clients \
+&& rm -rf /var/lib/apt/lists/*
 
 COPY start.sh ./
 COPY mosquitto.conf /mqtt/config/mosquitto.conf
@@ -17,4 +12,3 @@ VOLUME ["/mqtt/config", "/mqtt/data", "/mqtt/log"]
 
 EXPOSE 1883 9001
 CMD ["/usr/sbin/mosquitto", "-c", "/mqtt/config/mosquitto.conf"]
-
