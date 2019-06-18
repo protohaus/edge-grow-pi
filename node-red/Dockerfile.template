@@ -17,8 +17,11 @@ RUN useradd --home-dir /usr/src/node-red --no-create-home node-red \
 USER node-red
 
 # package.json contains Node-RED NPM module and node dependencies
-COPY package.json /usr/src/node-red/
+COPY package.json package-lock.json /usr/src/node-red/
 RUN npm install
+
+# settings.js contains the admin password and JS library setup
+COPY settings.js /data/
 
 # User configuration directory volume
 EXPOSE 1880
