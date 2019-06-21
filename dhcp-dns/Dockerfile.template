@@ -1,0 +1,14 @@
+FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu:bionic-build
+MAINTAINER Moritz Ulmer <moritz.ulmer@posteo.de>
+
+# Install the DHCP server
+RUN apt-get update && apt-get install -y \
+    isc-dhcp-server \
+&& rm -rf /var/lib/apt/lists/*
+
+# Copy the start script and DHCP server configuration
+COPY start.sh /usr/local/bin/
+COPY dhcpd.conf /data/dhcp/
+
+ENTRYPOINT ["bash", "start.sh"]
+
