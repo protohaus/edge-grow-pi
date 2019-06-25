@@ -1,7 +1,7 @@
 version: '2'
 
 volumes:
-  dhcp-data:
+  dnsmasq-data:
   nodered-data:
   mosquitto-data:
   mosquitto-log:
@@ -40,11 +40,9 @@ services:
     labels:
       io.resin.features.dbus: '1'
 
-  dhcp-dns:
-    build: ./dhcp-dns
-    container_name: dhcp-dns
+  dnsmasq:
+    build: ./dnsmasq
+    container_name: dnsmasq
     network_mode: host
-    environment:
-      - DHCPD_IFACE=eth0
     volumes:
-      - "dhcp-data:/data/dhcp"
+      - "dnsmasq-data:/data/"

@@ -3,12 +3,12 @@ MAINTAINER Moritz Ulmer <moritz.ulmer@posteo.de>
 
 # Install the DHCP server
 RUN apt-get update && apt-get install -y \
-    isc-dhcp-server \
+    dnsmasq \
 && rm -rf /var/lib/apt/lists/*
 
-# Copy the start script and DHCP server configuration
+# Copy the start script and dnsmasq server configuration
 COPY start.sh /usr/local/bin/
-COPY dhcpd.conf /data/dhcp/
+COPY dnsmasq.conf /data/
 
 ENTRYPOINT ["bash", "start.sh"]
 
