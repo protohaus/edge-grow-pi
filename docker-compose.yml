@@ -43,6 +43,7 @@ services:
   dnsmasq:
     build: ./dnsmasq
     container_name: dnsmasq
+    privileged: true
     network_mode: host
     volumes:
       - "dnsmasq-data:/data/"
