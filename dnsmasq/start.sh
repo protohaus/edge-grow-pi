@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnsmasq --keep-in-foreground --conf-file=/data/dnsmasq.conf --dhcp-leasefile=/data/dnsmasq.leases
+dnsmasq --keep-in-foreground --dhcp-leasefile=/data/dnsmasq.leases
