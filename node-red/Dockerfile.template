@@ -1,5 +1,9 @@
 FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu-node:8-bionic-build
-MAINTAINER Moritz Ulmer <moritz.ulmer@posteo.de>
+LABEL maintainer="moritz.ulmer@posteo.de"
+
+# Install Avahi to be able to advertise Mosquitto (MQTT) server
+RUN apt-get update && apt-get install -y \
+    libavahi-compat-libdnssd-dev
 
 # Home directory for Node-RED application source code.
 RUN mkdir -p /usr/src/node-red
