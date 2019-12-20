@@ -9,10 +9,9 @@ volumes:
 services:
   nodered:
     build: ./node-red
-    ports:
-      - "80:1880"
     volumes:
       - "nodered-data:/data"
+    network_mode: "host"
     labels:
       io.balena.features.supervisor-api: '1'
     depends_on:
