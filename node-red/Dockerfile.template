@@ -1,4 +1,4 @@
-FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu-node:8-bionic-build
+FROM balenalib/%%RESIN_MACHINE_NAME%%-ubuntu-node:12-bionic-build
 LABEL maintainer="moritz.ulmer@posteo.de"
 
 # Install Avahi to be able to advertise Mosquitto (MQTT) server
