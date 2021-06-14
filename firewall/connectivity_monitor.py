@@ -39,8 +39,8 @@ def activate_wifi_connection(name):
 
 if __name__ == "__main__":
     # Give the system 5 minutes to start up
-    print("Waiting 1 minute before monitoring connection")
-    time.sleep(60)
+    print("Waiting 10 minutes before monitoring connection")
+    time.sleep(600)
 
     print("Starting connectivity monitoring")
     while(True):
@@ -51,7 +51,7 @@ if __name__ == "__main__":
             
             NetworkManager.NetworkManager.WirelessEnabled = False
             time.sleep(5)
-            activate_wifi_connection('resin-wifi-01')
+            activate_wifi_connection('balena-wifi-01')
             NetworkManager.NetworkManager.WirelessEnabled = True
             time.sleep(60)
             client.captureMessage('Network was down. WiFi connections have been restarted.')
